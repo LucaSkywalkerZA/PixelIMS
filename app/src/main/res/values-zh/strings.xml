@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Pixel IMS</string>
+
+    <string name="system_info">系统状态</string>
+    <string name="android_version">Android: %s</string>
+    <string name="shizuku_status">Shizuku: %s</string>
+    <string name="shizuku_ready">✅ 就绪</string>
+    <string name="shizuku_not_running">❌ 未运行</string>
+    <string name="shizuku_no_permission">⚠️ 无权限</string>
+
+    <string name="persistent_mode">持久模式: %s</string>
+    <string name="config_status">配置: %s</string>
+    <string name="config_applied_short">✅ 已应用</string>
+    <string name="config_not_applied">⬜ 尚未应用</string>
+    <string name="yes">是</string>
+    <string name="no">否（仅本次会话）</string>
+
+    <string name="qpr2_warning">⚠️ Android 16 QPR2 Beta 3+: 持久配置受限，重启后需重新应用。</string>
+
+    <string name="features_config">功能配置</string>
+    <string name="volte">VoLTE（4G语音）</string>
+    <string name="volte_desc">启用4G高清语音通话</string>
+    <string name="vowifi">VoWiFi（WiFi通话）</string>
+    <string name="vowifi_desc">通过WiFi拨打电话</string>
+    <string name="vt">VT（视频通话）</string>
+    <string name="vt_desc">启用视频通话</string>
+    <string name="vonr">VoNR（5G语音）</string>
+    <string name="vonr_desc">通过5G进行语音通话</string>
+    <string name="cross_sim">跨SIM卡通话</string>
+    <string name="cross_sim_desc">双卡互通</string>
+    <string name="ut">UT补充服务</string>
+    <string name="ut_desc">呼叫转移、等待等</string>
+    <string name="_5g_nr">5G NR（NSA+SA）</string>
+    <string name="_5g_nr_desc">启用5G（非独立组网+独立组网）</string>
+
+    <string name="sim_card">SIM卡</string>
+    <string name="select_sim">选择SIM卡 →</string>
+    <string name="sim_1">SIM 1</string>
+    <string name="sim_2">SIM 2</string>
+    <string name="apply_to_all_sims">所有SIM卡</string>
+    <string name="apply_to_sim_1">应用到SIM 1</string>
+    <string name="apply_to_sim_2">应用到SIM 2</string>
+    <string name="apply_to_all">应用到全部</string>
+
+    <string name="switch_language">English</string>
+    <string name="go_to_network_settings">打开网络设置</string>
+    <string name="later">稍后</string>
+
+    <string name="shizuku_not_running_msg">Shizuku未运行，请先启动Shizuku。</string>
+    <string name="shizuku_no_permission_msg">请先授予Shizuku权限。</string>
+    <string name="config_applied">配置已应用</string>
+    <string name="config_success_message">配置成功！请前往网络设置开启5G/VoLTE开关。</string>
+    <string name="update_shizuku">请将Shizuku更新到最新版本。</string>
+
+    <string name="tips">提示：\n• 通过无线调试启动Shizuku（无需电脑）\n• 出现提示时授予Shizuku权限\n• "持久模式:是"表示配置重启后保留\n• 若为"否"，每次重启后需重新点击应用\n• 双卡设备推荐选择"所有SIM卡"</string>
+</resources>

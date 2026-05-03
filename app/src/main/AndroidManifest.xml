@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Needed so we can grant ourselves READ_PHONE_STATE at runtime -->
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+
+    <!--
+        Instrumentation entry point — this is the component that vvb2060's bypass launches.
+        targetPackage MUST match applicationId exactly.
+    -->
+    <instrumentation
+        android:name=".PrivilegedProcess"
+        android:targetPackage="${applicationId}" />
+
+    <application
+        android:label="@string/app_name"
+        android:icon="@mipmap/ic_launcher"
+        android:theme="@android:style/Theme.DeviceDefault.DayNight"
+        tools:ignore="MissingApplicationIcon">
+
+        <!-- Splash screen is the launcher entry point -->
+        <activity
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@android:style/Theme.DeviceDefault.NoActionBar.Fullscreen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="@string/app_name" />
+
+        <!--
+            Shizuku content provider — authority must match applicationId + ".shizuku".
+            This is how Shizuku delivers its binder to the app.
+            Permission restricts who can talk to it (only system/shell).
+        -->
+        <provider
+            android:name=".ShizukuProvider"
+            android:authorities="${applicationId}.shizuku"
+            android:exported="true"
+            android:multiprocess="false"
+            tools:ignore="ExportedContentProvider" />
+
+    </application>
+
+</manifest>

@@ -1,0 +1,2 @@
+-keep class io.github.pixelims.** { *; }
+-keep class rikka.shizuku.** { *; }
