@@ -36,12 +36,12 @@ jobs:
       run: |
         wget https://services.gradle.org/distributions/gradle-8.9-bin.zip
         unzip -q gradle-8.9-bin.zip
-        export PATH=$PATH:$PWD/gradle-8.9/bin
+        export PATH=$PWD/gradle-8.9/bin:$PATH
         gradle --version
         
     - name: Build with Gradle
       run: |
-        export PATH=$PATH:$PWD/gradle-8.9/bin
+        export PATH=$PWD/gradle-8.9/bin:$PATH
         cd $GITHUB_WORKSPACE
         gradle assembleRelease --stacktrace --no-daemon
       
