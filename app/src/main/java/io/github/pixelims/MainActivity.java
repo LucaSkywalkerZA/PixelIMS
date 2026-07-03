@@ -70,6 +70,9 @@ public class MainActivity extends Activity {
     private final Shizuku.OnBinderDeadListener binderDead = () ->
             runOnUiThread(this::updateShizukuStatus);
 
+    private final Shizuku.OnRequestPermissionResultListener permissionResult =
+            (requestCode, grantResult) -> runOnUiThread(this::updateShizukuStatus);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         String language = LocaleHelper.getLanguage(this);
@@ -89,6 +92,7 @@ public class MainActivity extends Activity {
 
         Shizuku.addBinderReceivedListener(binderReceived);
         Shizuku.addBinderDeadListener(binderDead);
+        Shizuku.addRequestPermissionResultListener(permissionResult);
     }
 
     @Override
@@ -103,6 +107,7 @@ public class MainActivity extends Activity {
         super.onDestroy();
         Shizuku.removeBinderReceivedListener(binderReceived);
         Shizuku.removeBinderDeadListener(binderDead);
+        Shizuku.removeRequestPermissionResultListener(permissionResult);
     }
 
     private void initViews() {
@@ -216,17 +221,6 @@ public class MainActivity extends Activity {
             return;
         }
         Shizuku.requestPermission(0);
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode,
-                                            String[] permissions, int[] grantResults) {
-        // Shizuku routes its permission result through onRequestPermissionsResult.
-        // Refresh status whenever any permission result arrives.
-        if (Shizuku.onRequestPermissionsResult(requestCode, permissions, grantResults)) {
-            updateShizukuStatus();
-        }
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
     }
 
     // -------------------------------------------------------------------------

@@ -39,6 +39,22 @@ jobs:
         export PATH=$PWD/gradle-8.9/bin:$PATH
         gradle --version
         
+    # The app references @hide framework members (CarrierConfigManager.overrideConfig,
+    # ActivityManager.INSTR_FLAG_*, Process.isSdkSandbox, etc.) that the public SDK
+    # android.jar does not expose. Swap in a full hidden-API android.jar (a drop-in
+    # replacement that also carries the framework resources.arsc, so aapt still links)
+    # for compileSdk 35. This only affects compilation/linking; the packaged APK runs
+    # against the device framework, unlocked at runtime via hiddenapibypass.
+    - name: Install hidden-API android.jar
+      run: |
+        yes | sdkmanager "platforms;android-35" >/dev/null 2>&1 || true
+        PLATFORM="$ANDROID_SDK_ROOT/platforms/android-35"
+        curl -sSL --retry 3 -o /tmp/android-hidden.jar \
+          https://raw.githubusercontent.com/Reginer/aosp-android-jar/main/android-35/android.jar
+        test -s /tmp/android-hidden.jar
+        mv "$PLATFORM/android.jar" "$PLATFORM/android.jar.orig"
+        cp /tmp/android-hidden.jar "$PLATFORM/android.jar"
+
     - name: Build with Gradle
       run: |
         export PATH=$PWD/gradle-8.9/bin:$PATH
